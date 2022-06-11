@@ -65,6 +65,7 @@ export default function Cell({
     numberColor,
     focusBackground,
     highlightBackground,
+    getCellBackground,
   } = useContext(ThemeContext);
 
   const handleClick = useCallback(
@@ -82,6 +83,11 @@ export default function Cell({
   const x = col * cellSize;
   const y = row * cellSize;
 
+  const specialCellBackground = getCellBackground
+    ? getCellBackground(row, col)
+    : undefined;
+  const finalCellBackground = specialCellBackground ?? cellBackground;
+
   return (
     <g
       onClick={handleClick}
@@ -98,7 +104,7 @@ export default function Cell({
             ? focusBackground
             : highlight
             ? highlightBackground
-            : cellBackground
+            : finalCellBackground
         }
         stroke={cellBorder}
         strokeWidth={cellSize / 50}

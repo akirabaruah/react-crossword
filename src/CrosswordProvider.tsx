@@ -81,6 +81,10 @@ export const crosswordProviderPropTypes = {
      * helps indicate in which direction focus will be moving; also used as a
      * background on the active clue  */
     highlightBackground: PropTypes.string,
+
+    /** returns a special cell background based on input ``row`` and ``col`` rather than the default cellBackground.
+     */
+    getCellBackground: PropTypes.func,
   }),
 
   /** whether to use browser storage to persist the player's work-in-progress */
@@ -304,6 +308,11 @@ export interface CrosswordProviderImperative {
    * @since 4.1.0
    */
   setGuess: (row: number, col: number, guess: string) => void;
+
+  /**
+   * Returns the background color for a specific grid position.
+   */
+  getCellBackground: (row: number, col: number) => void;
 }
 
 /**

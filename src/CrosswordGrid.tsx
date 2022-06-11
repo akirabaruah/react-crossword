@@ -61,6 +61,10 @@ const CrosswordGridPropTypes = {
      * helps indicate in which direction focus will be moving; also used as a
      * background on the active clue  */
     highlightBackground: PropTypes.string,
+
+    /** returns a special cell background based on input ``row`` and ``col`` rather than the default cellBackground.
+     */
+    getCellBackground: PropTypes.func,
   }),
 };
 
